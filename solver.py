@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Warren Usui, MIT License
+# Copyright (C) 2024 Warren Usui, MIT License
 def gen_future(reality):
     def gf_wgc(nfutgames):
         def get_answer(sample):

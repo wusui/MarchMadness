@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Warren Usui, MIT License
+# Copyright (C) 2024 Warren Usui, MIT License
 import datetime
 
 def table_header(solution):

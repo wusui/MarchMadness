@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Warren Usui, MIT License
+# Copyright (C) 2024 Warren Usui, MIT License
 import json
 from solver import rank_picks
 from html_gen import make_html
