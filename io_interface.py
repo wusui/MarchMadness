@@ -24,5 +24,5 @@ def make_page(ptype):
         fd.write(make_html(predictions(ptype)))
 
 if __name__ == "__main__":
-    #make_page('mens')
+    make_page('mens')
     make_page('womens')
