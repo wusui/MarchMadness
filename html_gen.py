@@ -1,7 +1,17 @@
 # Copyright (C) 2024 Warren Usui, MIT License
+"""
+Generate the html file used to output results.
+
+The data input to make_html consists of records that will be formatted into
+the table header and individual rows of the table, and text to be added to
+the text header.
+"""
 import datetime
 
 def table_header(solution):
+    """
+    Generate the html for the table header
+    """
     def mk_games():
         def igms():
             return list(map(lambda a: list(a.keys()), solution[0]['games']))
@@ -15,6 +25,9 @@ def table_header(solution):
         '<div>Payoff</div>\n' + mk_games() + '</th></tr>\n'
 
 def get_ccode(fgame):
+    """
+    Handle the colors used by the individual cells in the table.
+    """
     def gc_inner(dvals):
         def setf_dvals(cnumbs):
             def setbg_vals(icol):
@@ -26,8 +39,11 @@ def get_ccode(fgame):
     return gc_inner(list(fgame.values()))
 
 def table_body(solution):
+    """
+    Write the individual rows in the table
+    """
     def strfy(nfloat):
-        return "{:.6f}".format(nfloat)
+        return f'{nfloat:.6f}'
     def const_row(row):
         def left_cols():
             return ['<td>' + row['name'] + '</td>',
@@ -51,6 +67,9 @@ def table_body(solution):
     return '\n'.join(list(map(const_row, solution)))
 
 def html_header(tourney):
+    """
+    Generate the html for the file header
+    """
     return '<html>\n    <head>\n    <title>MAD AS A MARCH LLAMA' + \
            '    </title>\n    <link rel="icon" ' + \
            'href="../../src/main_page/basketball.png">\n' + \
@@ -66,8 +85,15 @@ def html_header(tourney):
            'NCAA Tournament</h1><br><br>'
 
 def html_trailer():
+    """
+    Generate the html for the file trailer
+    """
     return '        </table>\n    </center>\n    </body>\n</html>'
 
 def make_html(solution):
+    """
+    String together all the pieces that compose the html data returned
+    as a string.
+    """
     return html_header(solution[1]) + table_header(solution[0]) + \
             table_body(solution[0]) + html_trailer()
